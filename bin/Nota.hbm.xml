@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/11/2019 17:26:03 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Nota" table="tbNotas" catalog="db_tebd" optimistic-lock="version">
+        <id name="codigoDaNota" type="java.lang.Integer">
+            <column name="codigoDaNota_" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="aluno" class="Aluno" fetch="select">
+            <column name="alunoMatricula_" length="8" not-null="true" />
+        </many-to-one>
+        <property name="nota" type="float">
+            <column name="not_flo_nota" precision="10" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

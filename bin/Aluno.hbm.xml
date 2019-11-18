@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Aluno" table="tbAluno" catalog="db_tebd" optimistic-lock="version">
+        <id name="alunoMatricula" type="string">
+            <column name="alunoMatricula_" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="alunoNome" type="string">
+            <column name="alu__str_nome" length="30" not-null="true" />
+        </property>
+        <set name="notas" table="tbNotas" cascade="delete" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="alunoMatricula_" length="10" not-null="false" />
+            </key>
+            <one-to-many class="Nota" />
+        </set>
+    </class>
+</hibernate-mapping>
